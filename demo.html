@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Face Recognition Attendance System</title>
+    <link rel="stylesheet" href="style.css">
+<style>
+		
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		h1{background-color: lightblue;
+		text-align:center;
+		padding: 20px;
+		width: 800px;
+		justify-content: space-between;
+		}
+		.container {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 0 10px #ccc;
+			margin: 100px auto;
+			padding: 20px;
+			width: 800px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+		}
+		h1 {
+			text-align: center;
+			width: 100%;
+			margin-bottom: 30px;
+		}
+		.video-container {
+			width: 400px;
+			height: 400px;
+			background-color: #B8E8FC;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+		.btn-container {
+			width: 400px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+		}
+		button {
+			background-color: #13005A;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 48%;
+		}
+		button:hover {
+			background-color: lightblue;
+		}
+		#message {
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			margin: 20px 0;
+		}
+	</style>
+</head>
+<body style="background-image: url('n2.jpg');">
+	<center><h1>Face Recognition Attendance System</h1></center>
+	<center><img src="C:\Users\123\Desktop\mini-project\mainimage.png" width="600" height="300" ></center>
+		<div class="container" style="background-image: url('facial-recognition.jpg');">
+		<h1>Face Recognition System</h1>
+		<div class="video-container">
+			<video id="video" width="400" height="400" autoplay muted></video>
+		</div>
+		<div class="btn-container">
+			<button id="start">Start</button>
+			<button id="stop">Stop</button>
+		</div>
+		<p id="message"></p>
+	</div>
+	<script>
+		const video = document.getElementById("video");
+		const startButton = document.getElementById("start");
+		const stopButton = document.getElementById("stop");
+		const message = document.getElementById("message");
+
+		navigator.mediaDevices.getUserMedia({ video: true })
+			.then(stream => {
+				video.srcObject = stream;
+			})
+			.catch(error => {
+				message.innerHTML = "Failed to get camera stream";
+			});
+
+		startButton.onclick = () => {
+			startButton.disabled = true;
+			stopButton.disabled = false;
+			message.innerHTML = "Face recognition started";
+		};
+
+		stopButton.onclick = () => {
+			startButton.disabled = false;
+			stopButton.disabled = true;
+			message.innerHTML = "Face recognition stopped";
+		};
+	</script>
+    <header>
+        <nav>
+            <div class="container">
+                <a href="#" class="logo">Face Recognition Attendance System</a>
+                <ul>
+                    <li><a href="dashboard.html" target="_blank">Dashboard</a></li>
+                    <li><a href="admin.html" target="_blank">Admin</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Automate Attendance with Facial Recognition</h1>
+                <p>Experience a faster, smarter and more efficient way to keep track of attendance with our face recognition attendance system.</p>
+                <a href="#" class="cta">Get Started</a>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <h2>About the System</h2>
+                <p>A face recognition-based attendance system is a technology that uses facial recognition algorithms to identify individuals and record their attendance. It works by capturing an image or video of an individual's face, analyzing the facial features and comparing them with the existing database of faces to determine if there is a match. If a match is found, the system marks the individual as present and records the attendance.
+
+There are several benefits of using a face recognition-based attendance system. It eliminates the need for physical attendance registers, reduces the time required for attendance tracking, and increases accuracy by eliminating errors associated with manual attendance tracking.  With our system, you can track attendance accurately and efficiently, reduce errors, and improve productivity.</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container" style="background-color:865DFF">
+                <h2>Features</h2>
+                <ul>
+		    <li>Facial Detection</li>
+                    <li>Facial Recognition</li>
+                    <li>Automated Attendance Tracking</li>
+		    <li>Data management</li>
+		    <li>Accuracy</li>
+		    <li>Scalability</li>
+		    <li>User-friendly interface</li>
+		    <li>Security</li>
+		    <li>Flexibility</li>
+		    <li>Real-time monitoring</li>
+                    <li>Real-Time Notifications</li>
+                    <li>Easy User Management</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Get Started?</h2>
+                <a href="#" class="cta">Get Started</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Face Recognition Attendance System</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

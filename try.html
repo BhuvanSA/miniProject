@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Face Detection Demo</title>
+  </head>
+  <body>
+    <h1>Face Detection Demo</h1>
+    <div>
+      <video id="video" width="640" height="480" autoplay></video>
+      <canvas id="canvas" width="640" height="480"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/face-landmarks-detection"></script>
+    <script>
+      // get access to the webcam
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+          var video = document.getElementById('video');
+          video.srcObject = stream;
+          video.play();
+        })
+        .catch(function(error) {
+          console.log('error accessing webcam:', error);
+        });
+        
+      // wait for the video to start playing
+      video.addEventListener('play', function() {
+        // create a canvas for drawing the face detection results
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        
+        // load the face detection model
+        faceLandmarksDetection.load()
+          .then(function(model) {
+            // start processing the webcam feed
+            setInterval(function() {
+              // draw the current frame from the webcam onto the canvas
+              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+              
+              // detect faces in the current frame
+              model.estimateFaces({input: canvas})
+                .then(function(predictions) {
+                  // draw a rectangle around each detected face
+                  for (var i = 0; i < predictions.length; i++) {
+                    var box = predictions[i].boundingBox;
+                    ctx.beginPath();
+                    ctx.rect(box.x, box.y, box.width, box.height);
+                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = 'green';
+                    ctx.stroke();
+                  }
+                });
+            }, 100);
+          })
+          .catch(function(error) {
+            console.log('error loading face detection model:', error);
+          });
+      });
+    </script>
+  </

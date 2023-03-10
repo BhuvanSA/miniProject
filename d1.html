@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Face Recognition Attendance System</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		
+		.header {
+			background-color: #333;
+			color: #fff;
+			padding: 10px;
+			text-align: center;
+			font-size: 24px;
+			margin-bottom: 20px;
+		}
+		
+		.container {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		
+		.card {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+			padding: 20px;
+			margin-bottom: 20px;
+		}
+		
+		.card h2 {
+			margin-top: 0;
+			font-size: 20px;
+		}
+		
+		.card table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+		
+		.card th, .card td {
+			padding: 10px;
+			border: 1px solid #ccc;
+			text-align: center;
+		}
+		
+		.card th {
+			background-color: #f2f2f2;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		
+		.status {
+			display: inline-block;
+			padding: 5px 10px;
+			border-radius: 5px;
+			font-weight: bold;
+			font-size: 14px;
+		}
+		
+		.status.success {
+			background-color: #d4edda;
+			color: #155724;
+		}
+		
+		.status.error {
+			background-color: #f8d7da;
+			color: #721c24;
+		}
+		
+		.status.pending {
+			background-color: #fff3cd;
+			color: #856404;
+		}
+	</style>
+</head>
+<body>
+	<header class="header">
+		<h1>Face Recognition Attendance System</h1>
+	</header>
+	<div class="container">
+		<div class="card">
+			<h2>Today's Attendance</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Time In</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>John Doe</td>
+						<td>9:00 AM</td>
+						<td><span class="status success">Present</span></td>
+					</tr>
+					<tr>
+						<td>Jane Doe</td>
+						<td>-</td>
+						<td><span class="status pending">Pending</span></td>
+					</tr>
+					<tr>
+						<td>Bob Smith</td>
+						<td>-</td>
+						<td><span class="status error">Absent</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="card">
+			<h2>Recent Activity</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Time In</th>
+						
